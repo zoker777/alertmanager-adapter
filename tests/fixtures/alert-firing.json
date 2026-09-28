@@ -1,0 +1,15 @@
+{
+  "receiver": "adapter",
+  "status": "firing",
+  "groupLabels": {"alertname": "PodContainerCriticalMemoryUsage"},
+  "commonLabels": {"alertname": "PodContainerCriticalMemoryUsage", "severity": "critical", "environment": "production", "team": "ops", "namespace": "production"},
+  "commonAnnotations": {"summary": "Pod 容器内存使用率超过 Limit 的 90%"},
+  "alerts": [{
+    "status": "firing",
+    "labels": {"alertname": "PodContainerCriticalMemoryUsage", "severity": "critical", "environment": "production", "team": "ops", "namespace": "production", "pod": "order-service-7f987", "container": "order-service"},
+    "annotations": {"summary": "Pod 容器内存使用率超过 Limit 的 90%", "description": "Memory Limit 使用率 95%"},
+    "startsAt": "2026-09-23T08:00:00Z", "endsAt": "0001-01-01T00:00:00Z",
+    "fingerprint": "ignored-extra-field"
+  }],
+  "externalURL": "http://alertmanager.example"
+}

@@ -1,0 +1,37 @@
+{
+  "receiver": "adapter",
+  "status": "firing",
+  "groupLabels": {
+    "alertname": "AdapterFeishuSmokeTest"
+  },
+  "commonLabels": {
+    "alertname": "AdapterFeishuSmokeTest",
+    "severity": "critical",
+    "environment": "test",
+    "team": "ops",
+    "namespace": "adapter-test"
+  },
+  "commonAnnotations": {
+    "summary": "测试环境飞书通知链路验证"
+  },
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "AdapterFeishuSmokeTest",
+        "severity": "critical",
+        "environment": "test",
+        "team": "ops",
+        "namespace": "adapter-test",
+        "pod": "adapter-smoke-test",
+        "container": "adapter"
+      },
+      "annotations": {
+        "summary": "测试环境飞书通知链路验证",
+        "description": "这是一条手动测试告警，用于验证 Alertmanager Adapter 到飞书的通知链路，无需处理。"
+      },
+      "startsAt": "2026-09-28T03:21:00Z",
+      "endsAt": "0001-01-01T00:00:00Z"
+    }
+  ]
+}

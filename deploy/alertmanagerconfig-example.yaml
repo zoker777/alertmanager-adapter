@@ -1,0 +1,38 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: alertmanager-adapter
+  namespace: monitoring
+  labels:
+    alertmanagerConfig: adapter # Match your Alertmanager selector.
+spec:
+  route:
+    receiver: adapter
+    groupBy: [environment, namespace, alertname]
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 4h
+    routes:
+      - receiver: adapter
+        matchers:
+          - name: severity
+            value: critical
+            matchType: "="
+        groupWait: 10s
+        groupInterval: 2m
+        repeatInterval: 1h
+      - receiver: adapter
+        matchers:
+          - name: severity
+            value: warning
+            matchType: "="
+        groupWait: 30s
+        groupInterval: 5m
+        repeatInterval: 4h
+  receivers:
+    - name: adapter
+      webhookConfigs:
+        - sendResolved: true
+          urlSecret:
+            name: alertmanager-adapter-url
+            key: url

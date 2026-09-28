@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: alertmanager-adapter-url
+  namespace: monitoring
+type: Opaque
+stringData:
+  url: "http://alertmanager-adapter.monitoring.svc:8080/api/v1/alertmanager"

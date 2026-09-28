@@ -1,0 +1,5 @@
+{
+  "receiver": "adapter", "status": "resolved",
+  "commonLabels": {"alertname": "PodContainerCriticalMemoryUsage", "severity": "critical", "environment": "production", "team": "ops"},
+  "alerts": [{"status": "resolved", "labels": {"alertname": "PodContainerCriticalMemoryUsage"}, "annotations": {}, "startsAt": "2026-09-23T08:00:00Z", "endsAt": "2026-09-23T08:10:00Z"}]
+}

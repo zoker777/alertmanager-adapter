@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-adapter-config
+  namespace: monitoring
+data:
+  config.yaml: |
+    server:
+      host: 0.0.0.0
+      port: 8080
+    routing:
+      routes:
+        - {environment: production, severity: critical, team: ops, channels: [feishu, dingtalk, wecom]}
+        - {environment: production, severity: warning, team: ops, channels: [feishu]}
+        - {environment: production, severity: critical, team: backend, channels: [feishu, dingtalk]}
+        - {environment: production, severity: warning, team: backend, channels: [feishu]}
+        - {environment: production, severity: critical, team: dba, channels: [feishu, wecom]}
+        - {environment: production, severity: warning, team: dba, channels: [feishu]}
+        - {environment: test, severity: critical, team: ops, channels: [feishu]}
+        - {environment: test, severity: warning, team: ops, channels: [feishu]}
+        - {environment: test, severity: critical, team: ops-dingtalk-smoke, channels: [dingtalk]}
+      default:
+        channels: [feishu]
+        webhook_ref:
+          feishu: DEFAULT_FEISHU_WEBHOOK
+    webhooks:
+      production:
+        ops:
+          feishu: PROD_OPS_FEISHU_WEBHOOK
+          dingtalk: PROD_OPS_DINGTALK_WEBHOOK
+          wecom: PROD_OPS_WECOM_WEBHOOK
+        backend:
+          feishu: PROD_BACKEND_FEISHU_WEBHOOK
+          dingtalk: PROD_BACKEND_DINGTALK_WEBHOOK
+        dba:
+          feishu: PROD_DBA_FEISHU_WEBHOOK
+          wecom: PROD_DBA_WECOM_WEBHOOK
+      test:
+        ops:
+          feishu: TEST_OPS_FEISHU_WEBHOOK
+        ops-dingtalk-smoke:
+          dingtalk: TEST_OPS_DINGTALK_WEBHOOK
